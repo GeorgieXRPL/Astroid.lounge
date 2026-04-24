@@ -66,13 +66,26 @@ export default function RootLayout({
                 <strong className="text-[color:var(--color-lounge-text)]">
                   {branding.productName}
                 </strong>{' '}
-                is freeroll only. No buy-ins, no fiat, no rake. Prize pools are
-                funded by the Astroid project treasury.
+                is freeroll only. No buy-ins, no fiat, no rake. Any prizes are
+                promotional appreciation drops sponsored by the Astroid project
+                treasury, awarded at the operator&apos;s discretion. They are not
+                contractual winnings.
               </p>
               <p>
                 Not a casino. Not a charity. Not affiliated with any hospital.
                 Crypto involves risk - holding $ASTROID is not an investment in
                 this Lounge.
+              </p>
+              <p>
+                See the{' '}
+                <a className="underline" href="/terms">
+                  Terms of Service
+                </a>{' '}
+                and{' '}
+                <a className="underline" href="/privacy">
+                  Privacy Policy
+                </a>{' '}
+                for the full promotional-drop framework.
               </p>
               <p>
                 Questions? Email{' '}

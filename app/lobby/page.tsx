@@ -15,16 +15,18 @@ export default function LobbyPage() {
           Lobby - preview
         </p>
         <h1 className="font-[family-name:var(--font-display)] text-4xl font-semibold">
-          Tournament lobby
+          Community freerolls
         </h1>
         <p className="max-w-2xl text-[color:var(--color-lounge-text-muted)]">
-          The Lounge is in private build. The first scheduled freeroll will
+          The Lounge is in private build. Scheduled community freerolls will
           appear here once the operator opens registration. Hold at least{' '}
           <strong className="text-[color:var(--color-lounge-text)]">
             {config.token.minBalanceForEntry.toLocaleString()} $
             {config.token.symbol}
           </strong>{' '}
-          to be eligible.
+          to be eligible. Holding the token is not an entry fee - any
+          appreciation drops are promotional and at the operator\u2019s
+          discretion.
         </p>
       </header>
 
@@ -61,7 +63,12 @@ export default function LobbyPage() {
             buy-ins. Ever.
           </li>
           <li>
-            Prize payouts are signed by the operator out-of-band; the Lounge
+            Any prizes are promotional appreciation drops sponsored by the
+            project treasury, paid at the operator&apos;s discretion. They are
+            not contractual winnings.
+          </li>
+          <li>
+            Drop payouts are signed by the operator out-of-band; the Lounge
             never custody-holds your wallet.
           </li>
         </ul>

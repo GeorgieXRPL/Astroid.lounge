@@ -42,11 +42,17 @@ Request -> Cloudflare (DNS + DDoS) -> Vercel edge proxy (geoblock + headers)
 app/
   api/health/             liveness endpoint
   blocked/                geo-block landing page
-  lobby/                  tournament lobby (placeholder for v1)
+  lobby/                  tournament lobby (gated by attestation modal)
+    layout.tsx            wraps children in <AgeJurisdictionGate>
+  terms/                  Terms of Service - PLACEHOLDER, awaiting legal
+  privacy/                Privacy Policy - PLACEHOLDER, awaiting legal
+  components/
+    AgeJurisdictionGate.tsx   self-attestation modal (5 required boxes)
   lib/
     branding.ts           Lounge brand strings (separate from Astroid main)
     config.ts             typed env access; freeroll-only enforced here
     geoblock.ts           Tier 1/2/3 country + US state lists
+                          (NZ + UK + AU blocked due to operator residency)
     logger.ts             ported from MyDexx (production-safe logger)
     prizePool.ts          treasury balance + tournament prize math
     solana.ts             SPL token balance reads (no signing)
@@ -56,13 +62,29 @@ app/
     poker-engine/         ported as-is from MyDexx (CardUtils, GameEngine,
                           HandManager, PokerLogic, StateValidator)
     services/             PokerService (rewritten to drop the MyDexx
-                          RewardService dependency), BaseService
+                          RewardService dependency)
   layout.tsx              shared chrome (header / footer / disclaimers)
   page.tsx                landing page
 proxy.ts                  Next.js 16 proxy (geoblock + security headers)
+programs/                 Solana Anchor scaffold (NOT FOR DEPLOY)
+  README.md               pre-deploy checklist and rationale
+  astroid-lounge-payouts/ on-chain promotional drop payouts
 supabase/schema.sql       database schema for fresh Supabase project
+Anchor.toml + Cargo.toml  Anchor workspace config (root)
 .env.example              required environment variables
 ```
+
+## Door check + promotional framing
+
+Two trust-and-safety pieces shipped beyond geoblocking:
+
+1. **Self-attestation modal** in [`app/components/AgeJurisdictionGate.tsx`](app/components/AgeJurisdictionGate.tsx). Wraps `/lobby/*` and any future play routes. Visitor must check five boxes (age, region, promotional understanding, US-Person status, ToS acceptance) before render. Sets a versioned cookie + localStorage entry; bumping `ATTESTATION_VERSION` re-prompts everyone.
+
+2. **Promotional-drop language** across the site. The Lounge does not refer to "winnings" or "prizes earned"; everything is framed as **promotional appreciation drops awarded at the operator's discretion**. The wording lives in [`app/lib/branding.ts`](app/lib/branding.ts) (one source) and routes through every page that mentions money. This wording matters legally - see `/terms` for the framework once counsel reviews it.
+
+## Optional: on-chain payouts
+
+The `programs/` directory holds an Anchor scaffold for trust-minimised drop payouts. **It is not deployed and must not be deployed without an audit.** See [`programs/README.md`](programs/README.md) for the pre-deploy checklist. The Next.js app builds and runs without any Solana toolchain installed - the Anchor scaffold is opt-in for whoever picks up the on-chain payout work later.
 
 ## Local development
 

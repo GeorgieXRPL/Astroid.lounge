@@ -38,3 +38,10 @@ Thumbs.db
 
 # Cloudflare wrangler
 .wrangler/
+
+# Anchor / Rust build artifacts
+target/
+.anchor/
+test-ledger/
+*.so
+

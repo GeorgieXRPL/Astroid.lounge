@@ -46,8 +46,22 @@ export const TIER1_OFAC_COUNTRIES: ReadonlySet<string> = new Set([
  * Countries with strict gambling regulation where freeroll-with-prize
  * structures are still risky to operate. Conservative list - tighten
  * with operator's gaming-aware lawyer's advice before launch.
+ *
+ * NZ + AU + GB are blocked here for two reasons that compound:
+ *   - Their gambling regimes (NZ Gambling Act 2003; UK Gambling Act
+ *     2005 + Gambling Commission; AU Interactive Gambling Act 2001)
+ *     reach offshore operators that target their residents, and the
+ *     "freeroll" defence is not as well-tested in those jurisdictions
+ *     as it is in the US sweepstakes case law.
+ *   - The Lounge's beneficial owner is presently NZ-resident. Blocking
+ *     NZ removes the worst-case "operating to your home jurisdiction
+ *     from your home jurisdiction" exposure entirely. UK + AU are
+ *     blocked for symmetry with similar enforcement posture.
  */
 export const TIER2_GAMBLING_RESTRICTED_COUNTRIES: ReadonlySet<string> = new Set([
+  'NZ', // New Zealand - DIA enforcement; block to remove operator-home exposure
+  'AU', // Australia - Interactive Gambling Act 2001
+  'GB', // United Kingdom - Gambling Commission, strict offshore targeting rules
   'FR', // France - online gaming requires ANJ licence, includes free play
   'PL', // Poland - PolskaGry-type framework
   'TR', // Turkey - blanket prohibition

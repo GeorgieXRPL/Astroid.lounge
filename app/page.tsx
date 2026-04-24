@@ -34,16 +34,16 @@ export default function HomePage() {
 
       <section className="mt-24 grid gap-8 sm:grid-cols-3">
         <Card
-          title="Token-gated"
-          body={`Hold ${config.token.minBalanceForEntry.toLocaleString()}+ $${config.token.symbol} to register for tournaments. Balance is checked at registration close - no purchase, no buy-in, no rake.`}
+          title="Token-gated entry"
+          body={`Hold ${config.token.minBalanceForEntry.toLocaleString()}+ $${config.token.symbol} to register for a community freeroll. Holding the token is not an entry fee - it just signals you are part of the community. No purchase, no buy-in, no rake.`}
         />
         <Card
-          title="Project-funded prizes"
-          body="Pools are funded by the Astroid project treasury, not by player money. The Lounge never custody-holds your funds."
+          title="Promotional drops, not winnings"
+          body="Any prizes are promotional appreciation drops sponsored by the Astroid project treasury, awarded at the operator\u2019s discretion. They are not contractual winnings, not earned by play, and may be paused at any time."
         />
         <Card
           title="Geoblocked & age-gated"
-          body="Sanctioned and gambling-restricted regions are blocked at the edge. Players self-attest to age and jurisdiction at the door."
+          body="Sanctioned and gambling-restricted regions are blocked at the edge. Players self-attest to age and jurisdiction at the door before sitting down."
         />
       </section>
 
@@ -51,6 +51,15 @@ export default function HomePage() {
         <h2 className="text-2xl font-semibold">How the Lounge relates to Astroid</h2>
         <p className="mt-4 text-[color:var(--color-lounge-text-muted)]">
           {branding.parentRelationship}
+        </p>
+      </section>
+
+      <section className="mt-10 rounded-xl border border-[color:var(--color-lounge-border)] bg-[color:var(--color-lounge-surface)]/60 p-6">
+        <h2 className="text-sm font-semibold uppercase tracking-widest text-[color:var(--color-lounge-text-muted)]">
+          Promotional disclosure
+        </h2>
+        <p className="mt-3 text-sm text-[color:var(--color-lounge-text-muted)]">
+          {branding.promotionalDisclosure}
         </p>
       </section>
     </div>
