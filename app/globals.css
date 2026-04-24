@@ -1,0 +1,43 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-lounge-bg: #0a0e1a;
+  --color-lounge-surface: #111827;
+  --color-lounge-elevated: #1a2236;
+  --color-lounge-border: #243049;
+  --color-lounge-text: #e5e9f5;
+  --color-lounge-text-muted: #8b94ad;
+  --color-lounge-accent: #ffd166;
+  --color-lounge-accent-deep: #f4a73c;
+  --color-lounge-success: #5fd49d;
+  --color-lounge-danger: #f06b76;
+  --color-lounge-felt: #1d3a3f;
+  --color-lounge-felt-rim: #4a3424;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Bricolage Grotesque', 'Inter', sans-serif;
+}
+
+html,
+body {
+  background: var(--color-lounge-bg);
+  color: var(--color-lounge-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+}
+
+/* Reusable lounge-felt gradient for any "table" UI we build later */
+.lounge-felt {
+  background:
+    radial-gradient(ellipse at center, #2a5057 0%, var(--color-lounge-felt) 70%, #102023 100%);
+  border: 12px solid var(--color-lounge-felt-rim);
+  border-radius: 9999px;
+  box-shadow:
+    inset 0 0 60px rgba(0, 0, 0, 0.55),
+    0 25px 70px rgba(0, 0, 0, 0.6);
+}
